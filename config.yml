@@ -1,0 +1,9 @@
+app:
+  port: 5555
+db:
+  username: "myusername"
+  password: "mypassword"
+  host: "myhost"
+  port: "myport"
+  dbname: "mydb"
+  
