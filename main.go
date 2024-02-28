@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-hexagonal-architecture/repository"
 	"go-hexagonal-architecture/routes"
 
 	"github.com/gofiber/fiber/v2"
@@ -27,5 +28,6 @@ func initDataBase() *gorm.DB {
 	if err != nil {
 		panic(err)
 	}
+	db.AutoMigrate(&repository.User{})
 	return db
 }
