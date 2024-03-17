@@ -5,9 +5,9 @@
 ```
 $ git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.git
 ```
-
-ภายในโปรเจคนี้จะประกอบไปด้วย library ที่สำคัญอยู่หลายตัวที่ใช้สำหรับสร้าง Backend Web application
-ซึ่งผุ้่ที่นำ template นี้ไปใช้งานจะต้องมีความเข้าใจใน library พื้นฐานดังกล่าวก่อน ทั้งนี้ สามารถเข้าไปอ่านทำความเข้าใจเพิ่มเติมได้จาก
+> [!NOTE]
+> ภายในโปรเจคนี้จะประกอบไปด้วย library ที่สำคัญอยู่หลายตัวที่ใช้สำหรับสร้าง Backend Web application
+> ซึ่งผู้ที่นำ template นี้ไปใช้งานจะต้องมีความเข้าใจใน library พื้นฐานดังกล่าวก่อน ทั้งนี้ สามารถเข้าไปอ่านทำความเข้าใจเพิ่มเติมได้จาก
 
 1. [Go fiber](https://docs.gofiber.io/) | web framework
 ```
@@ -18,19 +18,19 @@ go get github.com/gofiber/fiber/v2
 ```
 go get -u gorm.io/gorm
 ```
-- Driver \n
-sqlite driver
-```
-go get -u gorm.io/driver/sqlite // optional
-```
-MySql driver
-```
-go get -u gorm.io/driver/mysql // optional
-```
-Postgres driver
-```
-go get -u gorm.io/driver/postgres // optional
-```
+> ### Driver
+> sqlite driver
+> ```
+> go get -u gorm.io/driver/sqlite // optional
+> ```
+> MySql driver
+> ```
+> go get -u gorm.io/driver/mysql // optional
+> ```
+> Postgres driver
+> ```
+> go get -u gorm.io/driver/postgres // optional
+> ```
 ------------
 3. [zap](https://pkg.go.dev/go.uber.org/zap) | ตัวจัดการ log
 ```
