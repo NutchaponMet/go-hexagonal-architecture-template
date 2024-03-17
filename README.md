@@ -61,9 +61,9 @@ db:
   dbname: "pgdb"
 mongodb:
   driver: "mongodb"
-  host: "10.1.1.96"
-  port: 27017
-  username: "api_user"
-  password: "api1234"
-  dbname: "api_dev_db"
+  host: "localhost"
+  port: 8080
+  username: "user"
+  password: "password"
+  dbname: "you_db"
 ```
