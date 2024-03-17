@@ -46,3 +46,24 @@ go get github.com/spf13/viper
 ```
 go get go.mongodb.org/mongo-driver/mongo
 ```
+------------
+## Configuration File
+##### config.yaml ---> dev configuration
+```yaml
+# dev config file
+app:
+  port: 5555
+db: 
+  username: "admin0001"
+  password: "admin1234"
+  host: "localhost"
+  port: 4444
+  dbname: "pgdb"
+mongodb:
+  driver: "mongodb"
+  host: "10.1.1.96"
+  port: 27017
+  username: "api_user"
+  password: "api1234"
+  dbname: "api_dev_db"
+```
