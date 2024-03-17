@@ -19,9 +19,9 @@ services:
       - 4444:5432
     shm_size: 128mb
     environment:
-      - POSTGRES_USER=admin0001
-      - POSTGRES_PASSWORD=admin1234
-      - POSTGRES_DB=appdb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -33,8 +33,8 @@ services:
     ports:
       - 9090:90
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
-      - PGADMIN_DEFAULT_PASSWORD=admin1234
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     networks:
       - pgsite
     depends_on:
