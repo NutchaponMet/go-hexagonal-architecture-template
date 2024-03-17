@@ -21,15 +21,15 @@ go get -u gorm.io/gorm
 > ### Driver
 > sqlite driver
 > ```
-> go get -u gorm.io/driver/sqlite // optional
+> go get -u gorm.io/driver/sqlite
 > ```
 > MySql driver
 > ```
-> go get -u gorm.io/driver/mysql // optional
+> go get -u gorm.io/driver/mysql
 > ```
 > Postgres driver
 > ```
-> go get -u gorm.io/driver/postgres // optional
+> go get -u gorm.io/driver/postgres
 > ```
 ------------
 3. [zap](https://pkg.go.dev/go.uber.org/zap) | ตัวจัดการ log
