@@ -18,6 +18,7 @@ var db *gorm.DB
 func init() {
 	initTimeZone()
 	initConfig()
+	logs.LogInit()
 	db = initDataBase()
 
 }
