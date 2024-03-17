@@ -7,7 +7,7 @@
 3. zap
 4. viper
 
-#### ตำสั่งสำหรับการ clone repository นี้
+#### คำสั่งสำหรับการ clone repository นี้
 ```
 $ git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.git
 ```
