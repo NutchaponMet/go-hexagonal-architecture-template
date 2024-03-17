@@ -13,21 +13,35 @@ $ git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.g
 ```
 go get github.com/gofiber/fiber/v2
 ```
+-----------
 2. [Gorm](https://gorm.io/index.html) | ตัวจัดการงานเกี่ยวกับฐานข้อมูล ติดกับฐานข้อมูล
 ```
 go get -u gorm.io/gorm
+```
+- Driver \n
+sqlite driver
+```
 go get -u gorm.io/driver/sqlite // optional
+```
+MySql driver
+```
 go get -u gorm.io/driver/mysql // optional
+```
+Postgres driver
+```
 go get -u gorm.io/driver/postgres // optional
 ```
+------------
 3. [zap](https://pkg.go.dev/go.uber.org/zap) | ตัวจัดการ log
 ```
 go get go.uber.org/zap
 ```
+------------
 4. [viper](https://pkg.go.dev/github.com/spf13/viper) | ตัวจัดการ configuration
 ```
 go get github.com/spf13/viper
 ```
+------------
 5. [mongodb driver](https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo) | ใช้สำหรับเป็นที่เก็บ logs
 ```
 go get go.mongodb.org/mongo-driver/mongo
