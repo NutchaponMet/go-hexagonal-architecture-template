@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"go-hexagonal-architecture/repository"
 	"go-hexagonal-architecture/services"
 
@@ -20,13 +19,12 @@ func (h userHandler) CreateUser(c *fiber.Ctx) error {
 	userBody := repository.User{}
 	err := c.BodyParser(&userBody)
 	if err != nil {
-		return fiber.NewError(fiber.StatusUnprocessableEntity)
+		return err
 	}
-	result, err := h.userSrv.CreateUser(userBody)
+	err = h.userSrv.CreateUser(userBody)
 	if err != nil {
-		fmt.Printf("Error -> %v", err)
+		handleError(c, err)
 	}
-	fmt.Println(result)
 	return c.SendStatus(201)
 }
 
@@ -34,7 +32,7 @@ func (h userHandler) GetUser(c *fiber.Ctx) error {
 	user := c.Params("user")
 	db_data, err := h.userSrv.GetUser(user)
 	if err != nil {
-		fmt.Printf("Error -> %v", err)
+		handleError(c, err)
 	}
 	return c.JSON(db_data)
 }

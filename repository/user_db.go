@@ -6,23 +6,24 @@ type userRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) userRepository {
+func NewUserRepository(db *gorm.DB) UserRepository {
+	db.AutoMigrate(&User{})
 	return userRepository{db: db}
 }
 
-func (r userRepository) CreateUser(User) (int64, error) {
-	result := r.db.Create(&User{})
-	if result.Error != nil {
-		panic(result.Error)
+func (r userRepository) CreateUser(User) error {
+	tx := r.db.Create(&User{})
+	if tx.Error != nil {
+		return tx.Error
 	}
-	return result.RowsAffected, nil
+	return nil
 }
 
-func (r userRepository) GetByUsername(username string) (User, error) {
-	db_data := User{}
-	result := r.db.Model(User{Username: username}).First(&db_data)
-	if result.Error != nil {
-		panic(result.Error)
+func (r userRepository) GetByUsername(username string) (*User, error) {
+	user := User{}
+	tx := r.db.Model(User{Username: username}).First(&user)
+	if tx.Error != nil {
+		return nil, tx.Error
 	}
-	return db_data, nil
+	return &user, nil
 }

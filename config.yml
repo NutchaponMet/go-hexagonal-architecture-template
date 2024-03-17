@@ -1,11 +1,9 @@
+# dev config file
 app:
   port: 5555
-db:
+db: 
   username: "admin0001"
   password: "admin1234"
-  # uncomment two under this line if run app on container
-  # host: "postgres_bullseye" 
-  # port: 5432
   host: "localhost"
   port: 4444
   dbname: "pgdb"

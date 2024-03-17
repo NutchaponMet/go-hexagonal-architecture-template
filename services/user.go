@@ -8,6 +8,6 @@ type UserResponse struct {
 }
 
 type UserService interface {
-	CreateUser(repository.User) (int64, error)
-	GetUser(string) (UserResponse, error)
+	CreateUser(repository.User) error
+	GetUser(string) (*UserResponse, error)
 }

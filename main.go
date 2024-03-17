@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-hexagonal-architecture/repository"
+	"go-hexagonal-architecture/middlewares"
 	"go-hexagonal-architecture/routes"
 	"strings"
 	"time"
@@ -13,13 +13,21 @@ import (
 	"gorm.io/gorm"
 )
 
-func main() {
+var db *gorm.DB
+
+func init() {
 	initTimeZone()
 	initConfig()
+	db = initDataBase()
+
+}
+
+func main() {
 
 	app := fiber.New()
 
-	db := initDataBase()
+	app.Use(middlewares.NewCorsOriginMiddleWare())
+	app.Use(middlewares.NewLoggerMiddleWare())
 
 	app.Mount("/api/auth", routes.Auth(db))
 
@@ -41,10 +49,8 @@ func initConfig() {
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(err)
-	}
+	viper.ReadInConfig()
+
 }
 
 func initDataBase() *gorm.DB {
@@ -58,11 +64,12 @@ func initDataBase() *gorm.DB {
 		viper.GetInt("db.port"),
 	)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		DryRun: false, // ถ้ารค่าเป็น true จะแสดงเฉพาะ sql statment
+		SkipDefaultTransaction: true,
+		DryRun:                 false, // ถ้ารค่าเป็น true จะแสดงเฉพาะ sql statment
+		PrepareStmt:            true,
 	})
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&repository.User{})
 	return db
 }

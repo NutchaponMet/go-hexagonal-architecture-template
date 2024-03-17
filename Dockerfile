@@ -7,6 +7,5 @@ RUN go build -o /go/bin/app_api
 FROM alpine
 RUN apk update && apk add --no-cache tzdata
 COPY --from=builder /go/bin/app_api /app_api
-COPY --from=builder /go/src/config.yaml /config.yaml
-ENV TZ=Asia/Bangkok
+ENV TZ="Asia/Bangkok"
 ENTRYPOINT [ "/app_api" ]
