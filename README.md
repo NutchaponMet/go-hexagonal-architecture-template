@@ -48,7 +48,7 @@ go get go.mongodb.org/mongo-driver/mongo
 ```
 ------------
 ## Configuration File
-##### config.yaml ---> dev configuration
+##### config.yaml --> dev configuration
 ```yaml
 # dev config file
 app:
@@ -67,3 +67,19 @@ mongodb:
   password: "password"
   dbname: "you_db"
 ```
+##### .env --> production configuration environment file
+```.env
+APP_PORT=5555
+DB_USERNAME="admin0001"
+DB_PASSWORD="admin1234"
+DB_HOST="db"
+DB_PORT=5432
+DB_DBNAME="appdb"
+MONGODB_DRIVER="mongodb"
+MONGODB_USERNAME="you_username"
+MONGODB_PASSWORD="your_password"
+MONGODB_HOST="localhost"
+MONGODB_PORT=8080
+MONGODB_DBNAME="your_dbname"
+```
+
