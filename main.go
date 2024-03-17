@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-hexagonal-architecture/logs"
 	"go-hexagonal-architecture/middlewares"
 	"go-hexagonal-architecture/routes"
 	"strings"
