@@ -26,7 +26,9 @@ func init() {
 
 func main() {
 
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		Prefork: false, // production Prefork : true
+	})
 
 	app.Use(middlewares.NewCorsOriginMiddleWare())
 	app.Use(middlewares.NewLoggerMiddleWare())
@@ -46,7 +48,7 @@ func initTimeZone() {
 
 func initConfig() {
 	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
+	viper.SetConfigType("yml")
 	viper.AddConfigPath(".")
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))

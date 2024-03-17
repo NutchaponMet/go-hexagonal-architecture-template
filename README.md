@@ -48,8 +48,8 @@ go get go.mongodb.org/mongo-driver/mongo
 ```
 ------------
 ## Configuration File
-##### config.yaml --> dev configuration
-```yaml
+##### config.yml --> dev configuration
+```yml
 # dev config file
 app:
   port: 5555
