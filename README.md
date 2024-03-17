@@ -1,5 +1,5 @@
 # Go Go Hexagonal Architecture Template
-### Go Hexagonal Architecture Template สำหรับผู้ที่สนใจอยากจะนำไปใช้เป็น template สำหรับขึ้นโปรเจคในการทำงาน API หลังบ้านต่างกับ Web application
+### Go Hexagonal Architecture Template สำหรับผู้ที่สนใจอยากจะนำไปใช้เป็น template สำหรับขึ้นโปรเจคในการทำงาน API หลังบ้านต่าง ๆ ของ Web application
 
 #### คำสั่งสำหรับการ clone repository นี้
 ```
