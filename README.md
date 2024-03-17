@@ -8,7 +8,7 @@ git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.git
 > [!NOTE]
 > ภายในโปรเจคนี้จะประกอบไปด้วย library ที่สำคัญอยู่หลายตัวที่ใช้สำหรับสร้าง Backend Web application
 > ซึ่งผู้ที่นำ template นี้ไปใช้งานจะต้องมีความเข้าใจใน library พื้นฐานดังกล่าวก่อน ทั้งนี้ สามารถเข้าไปอ่านทำความเข้าใจเพิ่มเติมได้ตามหัวข้อด้านล่างนี้ได้เลย
-
+---
 1. [Go fiber](https://docs.gofiber.io/) | web framework
 ```
 go get github.com/gofiber/fiber/v2
