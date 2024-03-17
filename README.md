@@ -1,9 +1,9 @@
-# Go Go Hexagonal Architecture Template
+# Go Hexagonal Architecture Template
 ### Go Hexagonal Architecture Template สำหรับผู้ที่สนใจอยากจะนำไปใช้เป็น template สำหรับขึ้นโปรเจคในการทำงาน API หลังบ้านต่าง ๆ ของ Web application
 ความรู้เกี่ยวกับภาษา go อื่นๆ สามารถศึกษาเพิ่มเติมได้ที่ [codebangkok](https://github.com/codebangkok/golang) ซึ่งถือเป็นแหล่งความรู้ที่ทำให้ repository นี้เกิดขึ้น
 #### คำสั่งสำหรับการ clone repository นี้
 ```
-$ git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.git
+git clone https://github.com/NutchaponMet/go-hexagonal-architecture-template.git
 ```
 > [!NOTE]
 > ภายในโปรเจคนี้จะประกอบไปด้วย library ที่สำคัญอยู่หลายตัวที่ใช้สำหรับสร้าง Backend Web application
