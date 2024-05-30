@@ -8,4 +8,4 @@ FROM alpine
 RUN apk update && apk add --no-cache tzdata
 COPY --from=builder /go/bin/app_api /app_api
 ENV TZ="Asia/Bangkok"
-ENTRYPOINT [ "/app_api" ]
+CMD ["/app_api" ]

@@ -25,8 +25,8 @@ func init() {
 func main() {
 
 	app := fiber.New(fiber.Config{
-		// Prefork: viper.GetString("app.mode") == "release", // production Prefork : true
-		Prefork: false,
+		Prefork: viper.GetString("app.mode") == "release", // production Prefork : true
+		// Prefork: false,
 	})
 
 	app.Use(middlewares.NewCorsOriginMiddleWare())
