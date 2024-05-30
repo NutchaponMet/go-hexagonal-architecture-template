@@ -9,7 +9,7 @@ services:
       - APP_MODE=release
     env_file:
       - .env
-    entrypoint: /app_api
+    command: /app_api
     depends_on:
       - db
     # restart: unless-stopped
