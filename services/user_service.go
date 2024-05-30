@@ -1,8 +1,8 @@
 package services
 
 import (
-	"go-hexagonal-architecture/logs"
-	"go-hexagonal-architecture/repository"
+	"go-hexagonal/logs"
+	"go-hexagonal/repository"
 
 	"gorm.io/gorm"
 )

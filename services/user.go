@@ -1,6 +1,6 @@
 package services
 
-import "go-hexagonal-architecture/repository"
+import "go-hexagonal/repository"
 
 type UserResponse struct {
 	Username string `json:"username"`

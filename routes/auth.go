@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"go-hexagonal-architecture/handlers"
-	"go-hexagonal-architecture/repository"
-	"go-hexagonal-architecture/services"
+	"go-hexagonal/handlers"
+	"go-hexagonal/repository"
+	"go-hexagonal/services"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"

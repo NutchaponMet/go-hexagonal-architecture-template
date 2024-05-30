@@ -1,7 +1,7 @@
 package services
 
 import (
-	"go-hexagonal-architecture/logs"
+	"go-hexagonal/logs"
 	"time"
 )
 

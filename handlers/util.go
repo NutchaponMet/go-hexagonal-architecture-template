@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"fmt"
-	"go-hexagonal-architecture/errs"
+	"go-hexagonal/errs"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,4 +1,3 @@
-version: '3'
 services:
   api:
     build:
@@ -6,15 +5,21 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3333:5555
+    environment:
+      - APP_MODE=release
     env_file:
       - .env
     entrypoint: /app_api
     depends_on:
-      - pg4
-    restart: always
+      - db
+    # restart: unless-stopped
+    restart: on-failure
+    networks:
+      - pgsite
     
   db:
     image: postgres:bullseye
+    container_name: db_server
     ports:
       - 4444:5432
     shm_size: 128mb
@@ -26,19 +31,6 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - pgsite
-      
-  pg4:
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-      - 9090:90
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-    networks:
-      - pgsite
-    depends_on:
-      - db
 
 
 volumes:

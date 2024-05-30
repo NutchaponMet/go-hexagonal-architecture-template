@@ -2,15 +2,13 @@ package main
 
 import (
 	"fmt"
-	"go-hexagonal-architecture/logs"
-	"go-hexagonal-architecture/middlewares"
-	"go-hexagonal-architecture/routes"
-	"strings"
-	"time"
+	"go-hexagonal/logs"
+	"go-hexagonal/middlewares"
+	"go-hexagonal/routes"
 
+	"github.com/gofiber/contrib/fiberzap/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/viper"
-	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -27,53 +25,25 @@ func init() {
 func main() {
 
 	app := fiber.New(fiber.Config{
-		Prefork: false, // production Prefork : true
+		// Prefork: viper.GetString("app.mode") == "release", // production Prefork : true
+		Prefork: false,
 	})
 
 	app.Use(middlewares.NewCorsOriginMiddleWare())
-	app.Use(middlewares.NewLoggerMiddleWare())
+
+	if viper.GetString("app.mode") == "release" {
+		app.Use(fiberzap.New(fiberzap.Config{Logger: logs.Log}))
+	} else {
+		app.Use(middlewares.NewLoggerMiddleWare())
+	}
 
 	app.Mount("/api/auth", routes.Auth(db))
 
-	app.Listen(fmt.Sprintf(":%v", viper.GetInt("app.port")))
-}
-
-func initTimeZone() {
-	ict, err := time.LoadLocation("Asia/Bangkok")
-	if err != nil {
-		panic(err)
+	if viper.GetString("app.mode") == "release" {
+		logs.Info("Fiber server start in production mode at port " + viper.GetString("app.port"))
+		app.Listen(fmt.Sprintf(":%v", viper.GetInt("app.port")))
+	} else {
+		logs.Info("Fiber server start in debug mode at port " + viper.GetString("app.port"))
+		app.Listen(fmt.Sprintf(":%v", viper.GetInt("app.port")))
 	}
-	time.Local = ict
-}
-
-func initConfig() {
-	viper.SetConfigName("config")
-	viper.SetConfigType("yml")
-	viper.AddConfigPath(".")
-	viper.AutomaticEnv()
-	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-
-	viper.ReadInConfig()
-
-}
-
-func initDataBase() *gorm.DB {
-
-	dsn := fmt.Sprintf(
-		"host=%v user=%v password=%v dbname=%v port=%v sslmode=disable TimeZone=Asia/Bangkok",
-		viper.GetString("db.host"),
-		viper.GetString("db.username"),
-		viper.GetString("db.password"),
-		viper.GetString("db.dbname"),
-		viper.GetInt("db.port"),
-	)
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		SkipDefaultTransaction: true,
-		DryRun:                 false, // ถ้ารค่าเป็น true จะแสดงเฉพาะ sql statment
-		PrepareStmt:            true,
-	})
-	if err != nil {
-		panic(err)
-	}
-	return db
 }

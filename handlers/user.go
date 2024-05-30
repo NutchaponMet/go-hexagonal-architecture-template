@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"go-hexagonal-architecture/repository"
-	"go-hexagonal-architecture/services"
+	"go-hexagonal/repository"
+	"go-hexagonal/services"
 
 	"github.com/gofiber/fiber/v2"
 )
