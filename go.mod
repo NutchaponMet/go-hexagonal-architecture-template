@@ -3,6 +3,7 @@ module go-hexagonal
 go 1.21.6
 
 require (
+	github.com/goccy/go-json v0.10.3
 	github.com/gofiber/contrib/fiberzap/v2 v2.1.4
 	github.com/infisical/go-sdk v0.2.0
 	go.uber.org/zap v1.27.0
@@ -34,7 +35,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-resty/resty/v2 v2.13.1 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
-	github.com/goccy/go-json v0.10.3 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
