@@ -1,49 +1,33 @@
 package main
 
 import (
-	"fmt"
-	"go-hexagonal/logs"
-	"go-hexagonal/middlewares"
-	"go-hexagonal/routes"
+	"go-hexagonal/api/middlewares"
+	"go-hexagonal/api/routes"
+	"go-hexagonal/configs"
+	"go-hexagonal/pkg/db"
+	"time"
 
-	"github.com/gofiber/contrib/fiberzap/v2"
+	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
-	"github.com/spf13/viper"
-	"gorm.io/gorm"
 )
 
-var db *gorm.DB
-
 func init() {
-	initTimeZone()
-	initConfig()
-	logs.LogInit()
-	db = initDataBase()
-
+	configs.Init()
+	db.InitDB()
 }
 
 func main() {
-
 	app := fiber.New(fiber.Config{
-		Prefork: viper.GetString("app.mode") == "release", // production Prefork : true
-		// Prefork: false,
+		IdleTimeout: 10 * time.Minute,
+		JSONEncoder: json.Marshal,
+		JSONDecoder: json.Unmarshal,
 	})
 
-	app.Use(middlewares.NewCorsOriginMiddleWare())
+	app.Use(middlewares.NewCorsMiddleWare())
+	app.Use(middlewares.NewLoggerMiddleWare())
 
-	if viper.GetString("app.mode") == "release" {
-		app.Use(fiberzap.New(fiberzap.Config{Logger: logs.Log}))
-	} else {
-		app.Use(middlewares.NewLoggerMiddleWare())
-	}
+	r := app.Group("/v1/api")
+	routes.User(r)
 
-	app.Mount("/api/auth", routes.Auth(db))
-
-	if viper.GetString("app.mode") == "release" {
-		logs.Info("Fiber server start in production mode at port " + viper.GetString("app.port"))
-		app.Listen(fmt.Sprintf(":%v", viper.GetInt("app.port")))
-	} else {
-		logs.Info("Fiber server start in debug mode at port " + viper.GetString("app.port"))
-		app.Listen(fmt.Sprintf(":%v", viper.GetInt("app.port")))
-	}
+	app.Listen("localhost:" + configs.GetString("SERVER_PORT"))
 }

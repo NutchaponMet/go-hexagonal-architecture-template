@@ -11,8 +11,7 @@ services:
       - .env
     depends_on:
       - db
-    # restart: unless-stopped
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - pgsite
     
